@@ -3,7 +3,6 @@ class GamesController < AuthenticatedController
 
   def index
     @games = Game.recent.all
-    
   end
 
   def new
@@ -26,6 +25,7 @@ class GamesController < AuthenticatedController
 
   def show
     @challengers = @game.participated_users
+    @challengers_count = @game.participated_users.length
   end
 
   def join

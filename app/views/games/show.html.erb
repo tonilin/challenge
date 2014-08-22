@@ -14,6 +14,12 @@
   <%= link_to "Complete!", complete_form_game_path(@game), :class => "btn btn-primary" %>
 <% end %>
 
+
+<br>
+
+Total Participators: <%= @challengers_count %>
+
+
 <p><%= @game.description %></p>
 
 <h3>Challengers</h3>
