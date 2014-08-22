@@ -36,6 +36,7 @@ gem 'unicorn'
 gem 'will_paginate', '3.0.3'
 gem 'will_paginate-bootstrap'
 gem 'pg'
+gem 'stringex'
 
 group :production, :staging do
   gem 'rails_12factor'
