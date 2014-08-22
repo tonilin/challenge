@@ -1,4 +1,14 @@
-<h1>GoGoGoal!</h1>
-
-
-<%= link_to "Start!!", games_path, :class => "btn btn-primary" %>
+<ul class="pager">
+    <div>
+        <%= image_tag("logo.png") %>
+    </div>
+    <div style="margin-top: 30px">
+      <%= image_tag("icon_02.png") %>
+    </div>
+    <div style="margin-top: 30px">
+        <a role="button">
+            <%= link_to image_tag("icon_01.png"), games_path %>
+        </a>
+    </div>
+  </ul>
+</div>
