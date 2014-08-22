@@ -28,9 +28,6 @@ class User < ActiveRecord::Base
   has_many :game_results, :through => :user_game_results, :source => :game
 
 
-  before_validation :extract_name_from_email, :on => :create
-
-
   def game_result(game)
     user_game_results.find_by_game_id(game.id)
   end
@@ -110,20 +107,6 @@ class User < ActiveRecord::Base
 
   end
 
-
-
-  def extract_name_from_email
-    return if name.present? && name.length >= 3
-    return if email.blank?
-
-    name_temp = email.split("@")[0].to_url
-
-    if User.find_by_name(name_temp).present? || name_temp.length < 3
-      name_temp = "#{name_temp}#{Time.now.to_i}"
-    end
-
-    self.name = name_temp
-  end
 
 
 
