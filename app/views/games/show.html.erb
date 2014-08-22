@@ -20,7 +20,7 @@
   <tbody>
     <% @challengers.each do |challenger| %>
       <tr>
-        <td><%= challenger.name %></td>
+        <td><%= render_user_avatar(challenger) %><%= challenger.name %></td>
       </tr>
     <% end %>
   </tbody>
