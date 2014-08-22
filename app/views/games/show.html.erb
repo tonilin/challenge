@@ -8,15 +8,11 @@
     <%= link_to "Quit", quit_game_path(@game), :method => :delete, :class => "btn btn-primary" %>
   <% end %>
 
-
-  <% if current_user.participated?(@game) %>
-    <%= link_to "Complete!", complete_form_game_path(@game), :class => "btn btn-primary" %>
-  <% end %>
-
-
-
 <% end %>
 
+<% if current_user.participated?(@game) %>
+  <%= link_to "Complete!", complete_form_game_path(@game), :class => "btn btn-primary" %>
+<% end %>
 
 <p><%= @game.description %></p>
 

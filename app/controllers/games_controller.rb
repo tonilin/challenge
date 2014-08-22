@@ -46,7 +46,7 @@ class GamesController < AuthenticatedController
   end
 
   def complete_form
-    
+    @user_game_result = UserGameResult.new
 
   end
 
