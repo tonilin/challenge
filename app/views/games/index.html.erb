@@ -17,7 +17,7 @@
       <tr style="background: white;">
         <td><%= link_to game.title, game_path(game), :style => "color: grey" %></td>
         <td width="20px">
-            <%= check_box_tag 'participated', '1', current_user.participated? game %>
+            <%= check_box_tag 'participated', '1', current_user.participated?(game) %>
         </td>
       </tr>
     <% end %>
