@@ -19,4 +19,9 @@ class Game < ActiveRecord::Base
 
   validates_presence_of :title, :description
 
+
+  def ended?
+    game_participators.winners.count > 0
+  end
+
 end

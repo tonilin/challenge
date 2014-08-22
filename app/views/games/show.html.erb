@@ -1,4 +1,20 @@
+
+
+<% if @game.ended? %>
+  <div class="jumbotron">
+    <% if @game.game_participators.winners.pluck(:user_id).include?(current_user.id) %>
+      <h1>You win</h1>
+    <% else %>
+      <h1>You lose</h1>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
 <h1><%= @game.title %></h1>
+
 
 <% if @game.user != current_user %>
 
