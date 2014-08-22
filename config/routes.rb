@@ -19,6 +19,7 @@ Challenge::Application.routes.draw do
       post :join
       delete :quit
       get :complete_form
+      post :complete
     end
 
   end

@@ -2,7 +2,7 @@
 
 
 
-<%= simple_form_for @user_game_result, url: games_path, wrapper: :bootstrap3_horizontal, defaults: {right_column_html: {class: "col-lg-5 col-md-5"},
+<%= simple_form_for @user_game_result, url: complete_game_path(@game), wrapper: :bootstrap3_horizontal, defaults: {right_column_html: {class: "col-lg-5 col-md-5"},
   label_html: {class: "col-lg-2 col-md-2"} }, html: {class: "form-horizontal", :role => "form", :multipart => true} do |f| %>
 
 
