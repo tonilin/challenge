@@ -14,10 +14,14 @@
 <table class="table table-hover">
   <tbody>
     <% @games.each do |game| %>
-      <tr style="background: white;">
+      <tr style="background: #f3fef5;">
         <td><%= link_to game.title, game_path(game), :style => "color: grey" %></td>
-        <td width="20px">
-            <%= check_box_tag 'participated', '1', current_user.participated?(game) %>
+        <td width="20px" style="font-size: 16px;">
+          <% if current_user.participated?(game) %>
+            <%= fa_icon("check-square-o", :class => "text-danger") %>
+          <% else %>
+            <%= fa_icon("square-o") %>
+          <% end %>
         </td>
       </tr>
     <% end %>
