@@ -2,7 +2,7 @@ class GamesController < AuthenticatedController
   before_filter :find_game, :except => [:index, :new, :create]
 
   def index
-    @games = Game.all
+    @games = Game.recent.all
     
   end
 

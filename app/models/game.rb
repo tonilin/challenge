@@ -15,7 +15,7 @@ class Game < ActiveRecord::Base
   has_many :game_participators, :dependent => :destroy
   has_many :participated_users, :through => :game_participators, :source => :user
 
-
+  scope :recent, -> {order("id DESC")}
 
   validates_presence_of :title, :description
 
