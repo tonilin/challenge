@@ -23,6 +23,15 @@
     <% @challengers.each do |challenger| %>
       <tr>
         <td><%= render_user_avatar(challenger) %><%= challenger.name %></td>
+        <td>
+          <% if challenger.game_result(@game) %>
+            <%= link_to challenger.game_result(@game).image.large.url do %>
+              <%= image_tag(challenger.game_result(@game).image.small) %>
+            <% end %>
+
+            <%= challenger.game_result(@game).description %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
   before_validation :extract_name_from_email, :on => :create
 
 
+  def game_result(game)
+    user_game_results.find_by_game_id(game.id)
+  end
+
 
 
   concerning :Authorizations do
