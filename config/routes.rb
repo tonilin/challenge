@@ -26,4 +26,8 @@ Challenge::Application.routes.draw do
 
   end
 
+  resources :profiles do
+
+  end
+
 end

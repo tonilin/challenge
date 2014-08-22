@@ -15,7 +15,7 @@
   <tbody>
     <% @games.each do |game| %>
       <tr style="background: #f3fef5;">
-        <td><%= link_to game.title, game_path(game), :style => "color: grey" %></td>
+        <td><%= link_to game.title, game_path(game), :style => "color: grey; display:block" %></td>
         <td width="20px" style="font-size: 16px;">
           <% if current_user.participated?(game) %>
             <%= fa_icon("check-square-o", :class => "text-danger") %>
@@ -31,7 +31,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="background: #82D98F;">
   <div class="container vcenter" style="text-align: center; font-size:20px">
     <span style="color: white">
-        You have joined <u>&nbsp;<%= current_user.participated_games.length %>&nbsp;</u> challenges
+        You have joined <a href="<%= profile_path(current_user) %>"><u>&nbsp;<%= current_user.participated_games.length %>&nbsp;</u></a> challenges
     </span>
   </div>
 </nav>
