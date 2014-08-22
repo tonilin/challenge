@@ -1,6 +1,11 @@
 class GamesController < AuthenticatedController
   before_filter :find_game, :only => [:show]
 
+  def index
+    @games = Game.all
+    
+  end
+
   def new
     @game = Game.new
   end

@@ -1,1 +1,15 @@
-<%= link_to "Create Game!", new_game_path, :class => "btn btn-primary" %>
+<%= link_to "Create Challege!", new_game_path, :class => "btn btn-primary" %>
+
+<h2>Challege List</h2>
+
+<table class="table table-hover">
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.id %></td>
+        <td><%= link_to game.title, game_path(game) %></td>
+        <td><%= link_to game.description, game_path(game) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
