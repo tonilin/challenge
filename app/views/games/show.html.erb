@@ -33,6 +33,9 @@ Total Participators: <%= @challengers_count %>
   <tbody>
     <% @challengers.each do |challenger| %>
       <tr>
+        <td>
+          <%= fa_icon("trophy") if @game.game_participators.winners.pluck(:user_id).include?(challenger.id) %>
+        </td>
         <td><%= render_user_avatar(challenger) %><%= challenger.name %></td>
         <td>
           <% if challenger.game_result(@game) %>
