@@ -45,6 +45,10 @@ class GamesController < AuthenticatedController
     redirect_to game_path(@game)
   end
 
+  def complete_form
+    
+
+  end
 
   private
 

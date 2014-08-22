@@ -24,8 +24,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :games
-  
+  has_many :user_game_results
+  has_many :game_results, :through => :user_game_results, :source => :game
+
+
   before_validation :extract_name_from_email, :on => :create
+
+
 
 
   concerning :Authorizations do
