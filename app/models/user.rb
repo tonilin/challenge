@@ -21,9 +21,43 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :games
+
+
+
+  concerning :Authorizations do
+    included do
+      extend OmniauthCallbacks
+      has_many :authorizations, :dependent => :destroy
+
+      def self.find_binding(provider, uid)
+        Authorization.find_by_provider_and_uid(provider, uid)
+      end
+    end
+
+    def bind_service(provider, uid, token)
+      binding = self.class.find_binding(provider, uid)
+
+      if !binding
+        authorizations.create(:provider => provider , :uid => uid, :token => token)
+      end
+    end
+
+    def fb_id
+      binding = authorizations.find_by_provider("facebook")
+
+      if binding
+        binding.uid
+      else
+        nil
+      end
+    end
+
+    private
+
+  end
 
 
 
