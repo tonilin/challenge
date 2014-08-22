@@ -5,7 +5,7 @@
   <% if !current_user.participated?(@game) %>
     <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-primary" %>
   <% else %>
-    <%#= link_to "Quit", quit_game_path(@game), :method => :delete, :class => "btn btn-primary" %>
+    <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-primary", :disabled => :disabled %>
   <% end %>
 
 <% end %>
