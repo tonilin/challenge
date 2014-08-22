@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140822093208) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_winner"
+    t.boolean  "is_winner",  default: false
   end
 
   create_table "games", force: true do |t|
