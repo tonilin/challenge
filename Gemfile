@@ -36,6 +36,10 @@ gem 'unicorn'
 gem 'will_paginate', '3.0.3'
 gem 'will_paginate-bootstrap'
 
+group :production, :staging do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'annotate'
   gem 'better_errors', '~> 0.9.0'
