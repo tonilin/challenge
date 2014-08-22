@@ -41,34 +41,21 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-<br>
-
-Total Participators: <%= @challengers_count %>
-
-<h3>Challengers</h3>
+<h3 style="color: white; padding: 0 10px; font-weight: normal">challengers:</h3>
 
 <table class="table">
   <tbody>
     <% @challengers.each do |challenger| %>
       <tr>
-        <td>
-          <%= fa_icon("trophy") if @game.game_participators.winners.pluck(:user_id).include?(challenger.id) %>
+        <td class="text-center" style="padding-top:15px;color: gold">
+          <%= fa_icon("trophy", :style => "font-size: 30px;") if @game.game_participators.winners.pluck(:user_id).include?(challenger.id) %>
         </td>
-        <td><%= render_user_avatar(challenger) %><%= challenger.name %></td>
+        <td><%= render_user_avatar(challenger) %></td>
         <td>
           <% if challenger.game_result(@game) %>
             <%= link_to challenger.game_result(@game).image.large.url do %>
-              <%= image_tag(challenger.game_result(@game).image.small) %>
+              <%= image_tag(challenger.game_result(@game).image.small, :style => "width: 50px") %>
             <% end %>
-
             <%= challenger.game_result(@game).description %>
           <% end %>
         </td>
