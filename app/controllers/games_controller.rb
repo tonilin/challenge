@@ -1,5 +1,5 @@
 class GamesController < AuthenticatedController
-  before_filter :find_game, :only => [:show]
+  before_filter :find_game, :except => [:index, :new, :create]
 
   def index
     @games = Game.all
@@ -12,6 +12,7 @@ class GamesController < AuthenticatedController
 
   def create
     @game = Game.new(game_params)
+    @game.user = current_user
 
     if @game.save
       redirect_to game_path(@game)
@@ -22,6 +23,13 @@ class GamesController < AuthenticatedController
 
   def show
     
+  end
+
+  def join
+
+    flash[:notice] = "Join Success!"
+
+    redirect_to game_path(@game)
   end
 
 

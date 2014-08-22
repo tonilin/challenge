@@ -5,5 +5,11 @@ Challenge::Application.routes.draw do
 
   resources :games do
 
+    member do
+      get  :join_form
+      post :join
+    end
+
   end
+
 end

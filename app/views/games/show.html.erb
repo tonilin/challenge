@@ -1,3 +1,9 @@
 <h1><%= @game.title %></h1>
 
 <p><%= @game.description %></p>
+
+
+
+<% if @game.user != current_user %>
+  <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-primary" %>
+<% end %>
