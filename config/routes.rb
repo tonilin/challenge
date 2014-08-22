@@ -5,7 +5,7 @@ Challenge::Application.routes.draw do
       only: [:new, :create],
       path: 'users',
       path_names: { new: 'sign_up' },
-      controller: 'users/registrations',
+      controller: 'devise/registrations',
       as: :user_registration do
         get :cancel
       end
