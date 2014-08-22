@@ -25,7 +25,7 @@ class GamesController < AuthenticatedController
   end
 
   def show
-    
+    @challengers = @game.participated_users
   end
 
   def join

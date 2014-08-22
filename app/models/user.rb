@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :games
-
+  
+  before_validation :extract_name_from_email, :on => :create
 
 
   concerning :Authorizations do
@@ -99,6 +100,22 @@ class User < ActiveRecord::Base
     private
 
   end
+
+
+
+  def extract_name_from_email
+    return if name.present? && name.length >= 3
+    return if email.blank?
+
+    name_temp = email.split("@")[0].to_url
+
+    if User.find_by_name(name_temp).present? || name_temp.length < 3
+      name_temp = "#{name_temp}#{Time.now.to_i}"
+    end
+
+    self.name = name_temp
+  end
+
 
 
 end

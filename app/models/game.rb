@@ -12,6 +12,10 @@
 
 class Game < ActiveRecord::Base
   belongs_to :user
+  has_many :game_participators, :dependent => :destroy
+  has_many :participated_users, :through => :game_participators, :source => :user
+
+
 
   validates_presence_of :title, :description
 

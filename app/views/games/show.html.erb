@@ -1,10 +1,5 @@
 <h1><%= @game.title %></h1>
 
-<p><%= @game.description %></p>
-
-
-
-
 <% if @game.user != current_user %>
 
   <% if !current_user.participated?(@game) %>
@@ -15,4 +10,21 @@
     <%= link_to "Quit", quit_game_path(@game), :method => :delete, :class => "btn btn-primary" %>
   <% end %>
 <% end %>
+
+
+<p><%= @game.description %></p>
+
+<h3>Challengers</h3>
+
+<table class="table table-hover">
+  <tbody>
+    <% @challengers.each do |challenger| %>
+      <tr>
+        <td><%= challenger.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 
