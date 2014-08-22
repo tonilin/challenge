@@ -20,6 +20,7 @@ Challenge::Application.routes.draw do
       delete :quit
       get :complete_form
       post :complete
+      get :choose_winner
     end
 
   end

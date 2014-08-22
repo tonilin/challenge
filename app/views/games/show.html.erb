@@ -15,9 +15,8 @@
   <% end %>
 
   <% if current_user.participated?(@game) %>
-    <%= link_to "Choose Winner", "#", :class => "btn btn-primary" %>
+    <%= link_to "Choose Winner", choose_winner_game_path(@game), :class => "btn btn-primary" %>
   <% end %>
-
 
 <br>
 
