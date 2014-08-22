@@ -7,6 +7,7 @@
 #  game_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  is_winner  :boolean          default(FALSE)
 #
 
 require 'rails_helper'

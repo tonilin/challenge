@@ -1,0 +1,32 @@
+
+
+<%= simple_form_for @game, url: choose_game_path(@game), :method => :patch, wrapper: :bootstrap3_horizontal, defaults: {right_column_html: {class: "col-lg-5 col-md-5"},
+  label_html: {class: "col-lg-2 col-md-2"} }, html: {class: "form-horizontal", :role => "form", :multipart => true} do |f| %>
+
+  <h1>Choose Winner</h1>
+
+
+
+
+  <table class="table">
+    <tbody>
+      <% @challengers.each do |challenger| %>
+        <tr>
+          <td><%= check_box_tag "users[]", challenger.id, @game.game_participators.winners.pluck(:user_id).include?(challenger.id) %></td>
+          <td><%= render_user_avatar(challenger) %><%= challenger.name %></td>
+          <td>
+            <% if challenger.game_result(@game) %>
+              <%= link_to challenger.game_result(@game).image.large.url do %>
+                <%= image_tag(challenger.game_result(@game).image.small) %>
+              <% end %>
+              <%= challenger.game_result(@game).description %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= f.submit "Choose", :class => "btn btn-primary" %>
+
+<% end %>

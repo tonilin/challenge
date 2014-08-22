@@ -68,6 +68,28 @@ class GamesController < AuthenticatedController
     end
   end
 
+  def choose_winner
+    @challengers = @game.participated_users
+  end
+
+  def choose
+    if params[:users].present?
+      user_ids = params[:users].map{|user_id| user_id.to_i }
+
+      @game.game_participators.update_all({:is_winner => false})
+
+      user_ids.each do |user_id|
+        game_participator = @game.game_participators.find_by_user_id(user_id)
+        game_participator.win!
+      end
+      
+      redirect_to game_path(@game)
+    else
+      flash[:error] = "You should select one winner at least."
+      redirect_to choose_winner_game_path(@game)
+    end
+  end
+
   private
 
   def user_game_result_params

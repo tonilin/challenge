@@ -21,6 +21,7 @@ Challenge::Application.routes.draw do
       get :complete_form
       post :complete
       get :choose_winner
+      patch :choose
     end
 
   end
