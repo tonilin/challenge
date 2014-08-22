@@ -1,52 +1,57 @@
-<a href="/games" style="display: block; padding: 20px;height: 100px; background-color:#ffcd84; color: white; font-size: 40px;">
+<a href="/games" style="display: block; padding: 20px;height: 100px; background-color:#ffcd84; color: white; font-size: 40px;margin-bottom: 0;">
   <%= fa_icon("angle-left") %> Challenge
 </a>
 
 
-
-
 <% if @game.ended? %>
-  <div class="jumbotron">
-    <% if @game.game_participators.winners.pluck(:user_id).include?(current_user.id) %>
-      <h1>You win</h1>
-    <% else %>
-      <h1>You lose</h1>
-    <% end %>
-  </div>
-<% end %>
-
-
-
-
-<h1><%= @game.title %></h1>
-
-
-<% if @game.user != current_user %>
-
-  <% if !current_user.participated?(@game) %>
-    <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-primary" %>
+  <% if @game.game_participators.winners.pluck(:user_id).include?(current_user.id) %>
+    <%= image_tag("/images/win.png", :class => "img-responsive center-block") %>
   <% else %>
-    <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-primary", :disabled => :disabled %>
+    <%= image_tag("/images/lose.png", :class => "img-responsive center-block") %>
   <% end %>
-
-<% else %>
-  <% if current_user.participated?(@game) %>
-    <%= link_to "Choose Winner", choose_winner_game_path(@game), :class => "btn btn-primary" %>
-  <% end %>
-
 <% end %>
 
-<% if current_user.participated?(@game) %>
-  <%= link_to "Complete!", complete_form_game_path(@game), :class => "btn btn-primary" %>
-<% end %>
+<div class="header text-center" style="background-color:#f3fef5;padding: 20px 20px;">
+  <h1 style="color:#a3a6a4;font-size: 26px;margin-top:10px;"><%= @game.title %></h1>
+  <p><%= @game.description %></p>
+
+  <% if @game.user != current_user %>
+
+    <% if !current_user.participated?(@game) %>
+      <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-lg btn-primary btn-block" %>
+    <% else %>
+      <%= link_to "Join", join_form_game_path(@game), :class => "btn btn-lg btn-primary btn-block", :disabled => :disabled %>
+    <% end %>
+
+  <% else %>
+    <% if !@game.ended? %>
+      <% if current_user.participated?(@game) %>
+        <%= link_to "Choose Winner", choose_winner_game_path(@game), :class => "btn btn-lg btn-primary btn-block" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+  <% if !@game.ended? %>
+    <% if current_user.participated?(@game) %>
+      <%= link_to "Upload result!", complete_form_game_path(@game), :class => "btn btn-lg btn-danger btn-block" %>
+    <% end %>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
 
 
 <br>
 
 Total Participators: <%= @challengers_count %>
-
-
-<p><%= @game.description %></p>
 
 <h3>Challengers</h3>
 
