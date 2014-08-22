@@ -15,6 +15,9 @@ class GamesController < AuthenticatedController
     @game.user = current_user
 
     if @game.save
+
+      current_user.participate!(@game)
+
       redirect_to game_path(@game)
     else
       render :new
