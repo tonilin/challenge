@@ -10,9 +10,13 @@
 
 <% end %>
 
-<% if current_user.participated?(@game) %>
-  <%= link_to "Complete!", complete_form_game_path(@game), :class => "btn btn-primary" %>
-<% end %>
+  <% if current_user.participated?(@game) %>
+    <%= link_to "Complete!", complete_form_game_path(@game), :class => "btn btn-primary" %>
+  <% end %>
+
+  <% if current_user.participated?(@game) %>
+    <%= link_to "Choose Winner", complete_form_game_path(@game), :class => "btn btn-primary" %>
+  <% end %>
 
 
 <br>
