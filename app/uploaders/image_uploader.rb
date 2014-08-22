@@ -11,7 +11,6 @@ class ImageUploader < BaseImageUploader
 
   version :large do
     process :resize_to_limit => [800, nil]
-    process :optimize
   end
 
   version :small, :from_version => :large do

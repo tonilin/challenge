@@ -50,7 +50,31 @@ class GamesController < AuthenticatedController
 
   end
 
+  def complete
+    @user_game_result = UserGameResult.find_by_game_id_and_user_id(@game.id, current_user.id)
+
+    if !@user_game_result.present?
+      @user_game_result = UserGameResult.new
+    end
+
+    @user_game_result.assign_attributes(user_game_result_params)
+    @user_game_result.game = @game
+    @user_game_result.user = current_user
+
+    if @user_game_result.save
+      redirect_to game_path(@game)
+    else
+      render :complete_form
+    end
+  end
+
   private
+
+  def user_game_result_params
+    params.require(:user_game_result).permit(:description, :image)
+  end
+
+
 
   def game_params
     params.require(:game).permit(:title, :description)
