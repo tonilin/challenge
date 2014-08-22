@@ -26,8 +26,18 @@ class GamesController < AuthenticatedController
   end
 
   def join
+    current_user.participate!(@game)
+
 
     flash[:notice] = "Join Success!"
+
+    redirect_to game_path(@game)
+  end
+
+  def quit
+    current_user.leave!(@game)
+
+    flash[:notice] = "Leave Success!"
 
     redirect_to game_path(@game)
   end

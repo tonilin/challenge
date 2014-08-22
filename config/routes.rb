@@ -8,6 +8,7 @@ Challenge::Application.routes.draw do
     member do
       get  :join_form
       post :join
+      delete :quit
     end
 
   end

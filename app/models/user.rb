@@ -35,14 +35,14 @@ class User < ActiveRecord::Base
 
     def game_participator(game)
       return nil if !game
-      game_participators.find_by_plan_id(game.id)
+      game_participators.find_by_game_id(game.id)
     end
 
     def participate!(game)
       return nil if !game
 
       if !participated?(game)
-        plan_participators.create({
+        game_participators.create({
           game_id: game.id
         })
       else
