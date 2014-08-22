@@ -8,7 +8,7 @@
       <tr>
         <td><%= game.id %></td>
         <td><%= link_to game.title, game_path(game) %></td>
-        <td><%= link_to game.description, game_path(game) %></td>
+        <td><%= game.description %></td>
       </tr>
     <% end %>
   </tbody>
