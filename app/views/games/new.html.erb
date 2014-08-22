@@ -1,4 +1,6 @@
-
+<a href="/games" style="display: block; padding: 20px;height: 100px; background-color:#ffcd84; color: white; font-size: 40px;margin-bottom: 0;">
+  <%= fa_icon("angle-left") %> Back
+</a>
 
 <%= simple_form_for @game, url: games_path, wrapper: :bootstrap3_horizontal, defaults: {right_column_html: {class: "col-lg-5 col-md-5"},
   label_html: {class: "col-lg-2 col-md-2"} }, html: {class: "form-horizontal", :role => "form", :multipart => true} do |f| %>
@@ -7,7 +9,7 @@
     <%= f.input :title, :label => "Title" %>
     <%= f.input :description, :label => "Description" %>
 
-    <%= f.submit "開啟", :class => "btn btn-primary", :"data-disable-with" => "Waiting..." %>
+    <%= f.submit "Create", :class => "btn btn-primary btn-block btn-lg btn-warning", :"data-disable-with" => "Waiting..." %>
 
   </div>
 
