@@ -25,4 +25,46 @@ class User < ActiveRecord::Base
 
   has_many :games
 
+
+
+  concerning :GameParticipators do
+    included do
+      has_many :game_participators
+      has_many :participated_games, :through => :game_participators, :source => :game
+    end
+
+    def game_participator(game)
+      return nil if !game
+      game_participators.find_by_plan_id(game.id)
+    end
+
+    def participate!(game)
+      return nil if !game
+
+      if !participated?(game)
+        plan_participators.create({
+          game_id: game.id
+        })
+      else
+        game_participator(game)
+      end
+    end
+
+    def participated?(game)
+      game_participator(game).present?
+    end
+
+    def leave!(game)
+      return nil if !game
+
+      if participated?(game)
+        game_participator(game).destroy
+      end
+    end
+
+    private
+
+  end
+
+
 end
